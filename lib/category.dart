@@ -53,8 +53,8 @@ class Category extends StatelessWidget {
         height: 100.0,
         child: InkWell(
           borderRadius: _borderRadius,
-          highlightColor: color,
-          splashColor: color,
+          highlightColor: color['highlights'],
+          splashColor: color['splash'],
           onTap: () => _navigateToConverter(context),
           child: Padding(
             padding: EdgeInsets.all(16.0),

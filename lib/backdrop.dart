@@ -256,6 +256,7 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
         frontTitle: widget.frontTitle,
         backTitle: widget.backTitle,
       ),
+
       ),
 
       body: LayoutBuilder(builder: _buildStack),

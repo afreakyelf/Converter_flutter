@@ -1,6 +1,9 @@
+import 'package:first_flutter/category_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:first_flutter/category.dart';
 import 'package:first_flutter/unit.dart';
+
+
 
 final _backgroundColor = Colors.green[100];
 
@@ -13,7 +16,11 @@ class CategoryRoute extends StatefulWidget {
 
 class _CategoryRouteState extends State<CategoryRoute> {
   final _categories = <Category>[];
+  Category _defaultCategory;
+  Category _currentCategory;  
 
+  
+  
   static const _categoryNames = <String>[
     'Length',
     'Area',
@@ -66,56 +73,42 @@ class _CategoryRouteState extends State<CategoryRoute> {
   void initState() {
     super.initState();
     for (var i = 0; i < _categoryNames.length; i++) {
-      _categories.add(Category(
+      var category = Category(
         name: _categoryNames[i],
         color: _baseColors[i],
         iconLocation: Icons.cake,
         units: _retrieveUnitList(_categoryNames[i]),
-      ));
+      );
+      if(i==0){
+        _defaultCategory = category;
+      }
+      _categories.add(category);
     }
   }
 
-  Widget _buildCategoryWidget() {
+  void _onCategoryTap(Category category){
+    setState(() {
+      _currentCategory = category;
+    });
+  }
+
+  Widget _buildCategoryWidget(){
     return ListView.builder(
-      itemBuilder: (BuildContext context, int index) => _categories[index],
+        itemBuilder: (BuildContext context, int index){
+      return CategoryTile(
+        category: _categories[index],
+        onTap: _onCategoryTap,
+      );
+    },
       itemCount: _categories.length,
     );
   }
 
-  List<Unit> _retrieveUnitList(String categoryName) {
-    return List.generate(10, (int i) {
-      i += 1;
-      return Unit(
-        name: '$categoryName Unit $i',
-        conversion: i.toDouble(),
-      );
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    final listView = Container(
-      color: _backgroundColor,
-      padding: EdgeInsets.symmetric(horizontal: 8.0),
-      child: _buildCategoryWidget(),
-    );
-
-    final appBar = AppBar(
-      elevation: 0.0,
-      title: Text(
-        'Unit Converter',
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 30.0,
-        ),
-      ),
-      centerTitle: true,
-      backgroundColor: _backgroundColor,
-    );
-
-    return Scaffold(
-      appBar: appBar,
-      body: listView,
-    );
+    // TODO: implement build
   }
+
+
+
 }

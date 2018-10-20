@@ -109,10 +109,10 @@ class _BackdropTitle extends AnimatedWidget {
 
 class Backdrop extends StatefulWidget{
   final Category currentCategory;
-  final Widget frontPanel,
-  final Widget backPanel,
-  final Widget frontTitle,
-  final Widget backTitle,
+  final Widget frontPanel;
+  final Widget backPanel;
+  final Widget frontTitle;
+  final Widget backTitle;
 
   const Backdrop({
     @required this.currentCategory,

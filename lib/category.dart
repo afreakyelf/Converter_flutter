@@ -5,7 +5,7 @@ import 'package:first_flutter/unit.dart';
 
 final _borderRadius = BorderRadius.circular(50.0);
 
-class Category extends StatelessWidget {
+class Category {
   final String name;
   final ColorSwatch color;
   final IconData iconLocation;
@@ -21,8 +21,8 @@ class Category extends StatelessWidget {
       : assert(name != null),
         assert(color != null),
         assert(iconLocation != null),
-        assert(units != null),
-        super(key: key);
+        assert(units != null);
+/*        super(key: key);
 
   void _navigateToConverter(BuildContext context){
     Navigator.of(context).push(MaterialPageRoute<Null>(
@@ -81,5 +81,5 @@ class Category extends StatelessWidget {
         ),
       ),
     );
-  }
+  }*/
 }
